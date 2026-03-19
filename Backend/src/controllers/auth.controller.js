@@ -74,7 +74,12 @@ export const login = async(req,res)=>{
 
 export const logout = async (req,res)=>{
     try {
-        res.cookie("jwt","",{maxAge:0});
+        res.cookie("jwt","",{
+            maxAge: 0,
+            httpOnly:true,
+            sameSite: "strict",
+            secure: process.env.NODE_ENV !== "development"
+        });
         return res.status(200).json({message:"Logged Out Successfully"});
     } catch (error) {
         console.log("error in logout controller ",error.message);
@@ -92,7 +97,7 @@ export const updateProfile = async (req,res)=>{
         }
 
         const uploadResponse = await cloudinary.uploader.upload(profilePic);
-        const updatedUser = await User.findByIdAndUpdate(userId,{profilePic:uploadResponse.secure_url},{new:true});
+        const updatedUser = await User.findByIdAndUpdate(userId,{profilePic:uploadResponse.secure_url},{new:true}).select("-password");
 
         return res.status(200).json(updatedUser);
     } catch (error) {

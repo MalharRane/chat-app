@@ -32,11 +32,11 @@ const ProfilePage = () => {
 
           <div className='flex flex-col items-center gap-4'>
             <div className='relative'>
-              <img src={selectedImg || authUser.profilePic || '/src/assets/avatar.png' }
+              <img src={selectedImg || authUser.profilePic || '/avatar.png' }
               alt='Profile'
               className='size-32 rounded-full object-cover border-4 ' />
               <label htmlFor="avatar-upload"
-            className={`absolute bottom-0 right-0 bg-scale-content hover-scale-105
+            className={`absolute bottom-0 right-0 bg-base-content hover:scale-105
             p-2 rounded-full cursor-pointer transition-all duration-200
             ${isUpdatingProfile ? "animate-pulse pointer-events-none" : ""}`}>
 

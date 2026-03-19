@@ -2,7 +2,6 @@ import {create} from "zustand"
 import {axiosInstance} from "../lib/axios.js"
 import toast from "react-hot-toast";
 import {io} from 'socket.io-client';
-import { query } from "express";
 
 const BASE_URL = "http://localhost:5001"
 export const useAuthStore = create((set,get)=>({

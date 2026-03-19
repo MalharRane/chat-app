@@ -13,6 +13,7 @@ const MessageInput = () => {
     const file = e.target.files[0];
     if(!file.type.startsWith('image/')){
       toast.error("please select an image first");
+      return;
     }
 
     const reader = new FileReader();
